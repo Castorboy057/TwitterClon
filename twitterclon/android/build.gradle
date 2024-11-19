@@ -1,0 +1,22 @@
+buildscript {
+    repositories {
+        google()  // Asegúrate de que este repositorio esté presente
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.0'  // Verifica si es la última versión
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.15'  // Asegúrate de que esta línea esté presente
+    }
+}
+
+
+rootProject.buildDir = "../build"
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
